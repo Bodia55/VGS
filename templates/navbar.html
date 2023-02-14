@@ -1,0 +1,16 @@
+{% load static %}
+<style>
+.nav-item {
+    color:#aaaaaa; 
+}
+.nav-item:hover {
+    color:#666;
+}
+</style>
+<div style="display:flex; flex-direction:row; justify-content:space-between; align-items:center; background-color:#111111; padding:40px;">
+    <img style="width:100px; height:100px;" src="{% static 'images/VGS.png' %}" alt="img">
+    <div style="display:flex; gap:30px; align-items:center; justify-content: center;">
+        <a class="nav-item" style="font-family:Courier Prime, sans-serif; text-decoration:none;" href="/">HOME</a>
+        <a class="nav-item" style="font-family:Courier Prime, sans-serif; text-decoration:none;" href="http://vgsguc.000webhostapp.com/games">GAMES</a>
+    </div>
+</div>

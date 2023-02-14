@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-2khalm=0r)1y^^#bci6e+*&-1w5g*)0f_#561-5=gr=a_^52$-
 # SECURITY WARNING: don't run with debug turned on in production!
 # for production set debug false
 
-DEBUG = False
+DEBUG = True
 
 # for production add 127.0.0.1 as an allowed host
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -152,6 +152,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # USE THIS FOR PRODUCTION
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/images/'
+if DEBUG:
+    STATIC_URL=  'static/'
+    MEDIA_URL = '/images/'
+    
 
 # USE THIS FOR DEVELOPMENT
 #STATIC_URL = 'static/'

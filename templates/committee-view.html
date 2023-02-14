@@ -1,4 +1,8 @@
-<div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
+{% extends 'main.html' %}
+
+
+{% block content %}
+<!-- <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:flex-start;">
     <h1>{{name}}</h1>
     {% for resource in resources %}
         <h3>{{resource.resource_name}}</h3>
@@ -12,4 +16,59 @@
             <a href="{{resource.resource_data.url}}">{{resource.resource_data.name}}</a>
         {% endif %}
     {% endfor %}
+</div> -->
+
+<style>
+    .card-wrapper {
+        display:flex;
+        flex-direction:column;
+        padding:20px;
+        width:max-content;
+        border:1px solid black;
+        border-radius:20px;
+        align-items:flex-start;
+        justify-content:flex-start;
+        width:800px;
+    }
+    h3 {
+        font-family:Courier Prime, sans-serif; 
+        color:white;
+    }
+    p {
+        font-family:Courier Prime, sans-serif; 
+        color:white;
+    }
+    .btn{
+        font-family: Roboto, sans-serif;
+        font-weight: 0;
+        font-size: 14px;
+        color: #fff;
+        background-color: #585959;
+        padding: 10px 30px;
+        border: none;
+        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border-radius: 9px;
+        transition : 463ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+    }
+    .btn-child {
+        text-decoration: none;
+        color:white;
+    }
+</style>
+
+<div style="width:100%; height:100; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:30px;">
+    <h1 style="font-family:Courier Prime, sans-serif; color:white">{{name}}</h1>
+    {% for resource in resources %}
+        <div class="card-wrapper">
+            <h3>{{resource.resource_name}}</h3>
+            <p>({{resource.resource_type}})</p>
+            <button class="btn"><a class="btn-child" href="{{resource.resource_data.url}}">Download</a></button>
+        </div>
+    {% endfor %}
 </div>
+{% endblock content %}
