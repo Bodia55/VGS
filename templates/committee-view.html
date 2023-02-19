@@ -28,7 +28,6 @@
         border-radius:20px;
         align-items:flex-start;
         justify-content:flex-start;
-        width:800px;
     }
     h3 {
         font-family:Courier Prime, sans-serif; 
@@ -61,14 +60,26 @@
     }
 </style>
 
+<body>
+
+<script>
+   function loadwidth() {
+        document.getElementById('card-wrapper').setAttribute("style", `width:${screen.width-100}px;`);
+   }
+   window.onload = loadwidth;
+</script>
+
 <div style="width:100%; height:100; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:30px;">
     <h1 style="font-family:Courier Prime, sans-serif; color:white">{{name}}</h1>
     {% for resource in resources %}
-        <div class="card-wrapper">
+        <div id="card-wrapper" class="card-wrapper" >
             <h3>{{resource.resource_name}}</h3>
             <p>({{resource.resource_type}})</p>
             <button class="btn"><a class="btn-child" href="{{resource.resource_data.url}}">Download</a></button>
         </div>
     {% endfor %}
 </div>
+
+</body>
+
 {% endblock content %}
