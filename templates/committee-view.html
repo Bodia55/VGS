@@ -62,7 +62,11 @@
 
 <script>
    function loadwidth() {
-        document.getElementById('card-wrapper').setAttribute("style", `width:${screen.width-100}px;`);
+        var cards = document.getElementsByClassName('card-wrapper');
+        for (let i = 0; i < cards.length; i++) {
+            var card = cards.item(i);
+            card.setAttribute("style",  `width:${screen.width-100}px;`);
+        }
    }
    window.onload = loadwidth;
 </script>
