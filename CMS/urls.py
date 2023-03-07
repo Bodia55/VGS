@@ -1,9 +1,14 @@
 from django.urls import path
-from . import views
+from .views import ResourceAPIView
 
 urlpatterns = [
-    path('', views.cms),
-    path('GDD/', views.gdd_view, name="GDD"),
-    path('GSD/', views.gsd_view, name="GSD"),
-    path('GAD/', views.gad_view, name="GAD")
+    path('gdd', ResourceAPIView.as_view({
+    'get': 'list_gdd'
+    })),
+    path('gad', ResourceAPIView.as_view({
+    'get': 'list_gad'
+    })),
+    path('gsd', ResourceAPIView.as_view({
+    'get': 'list_gsd'
+    }))
 ]

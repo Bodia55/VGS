@@ -1,23 +1,20 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework.response import Response
 from .models import Resource
+from .serializers import ResourceSerializer
 
-# Create your views here.
-def cms(request):
-    resources = Resource.objects.all()
-    context = {'resources':resources}
-    return render(request, 'cms.html', context)
-
-def gdd_view(request):
-    resources = Resource.objects.filter(committee='GDD')
-    context = {'name':'GDD', 'resources':resources}
-    return render(request, 'committee-view.html', context)
-
-def gsd_view(request):
-    resources = Resource.objects.filter(committee='GSD')
-    context = {'name':'GSD', 'resources':resources}
-    return render(request, 'committee-view.html', context)
-
-def gad_view(request):
-    resources = Resource.objects.filter(committee='GAD')
-    context = {'name':'GAD', 'resources':resources}
-    return render(request, 'committee-view.html', context)
+class ResourceAPIView(viewsets.ViewSet):
+    def list_gdd(self, request):
+        gdd_resources = Resource.objects.filter(committee='GDD')
+        serializer = ResourceSerializer(gdd_resources, many=True)
+        return Response(serializer.data)
+    
+    def list_gad(self, request):
+        gad_resources = Resource.objects.filter(committee='GAD')
+        serializer = ResourceSerializer(gad_resources, many=True)
+        return Response(serializer.data)
+    
+    def list_gsd(self, request):
+        gsd_resources = Resource.objects.filter(committee='GSD')
+        serializer = ResourceSerializer(gsd_resources, many=True)
+        return Response(serializer.data)
