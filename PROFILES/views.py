@@ -8,10 +8,10 @@ import uuid
 class ProfileAPIView(viewsets.ViewSet):
     def login(self, request):
         if request.method == 'POST':
-            guc_id = request.data['guc_id']
+            member_id = request.data['member_id']
             password = request.data['password']
             try:
-                profile = Profile.objects.get(guc_id=guc_id)
+                profile = Profile.objects.get(member_id=member_id)
                 if password == profile.password:
                     profile.sessionId = uuid.uuid4()
                     profile.save()
