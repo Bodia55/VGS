@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-2khalm=0r)1y^^#bci6e+*&-1w5g*)0f_#561-5=gr=a_^52$-
 DEBUG = True
 
 # for production add 127.0.0.1 as an allowed host
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://vgs-production.up.railway.app/','*']
 
 
 # Application definition
