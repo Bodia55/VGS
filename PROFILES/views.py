@@ -21,3 +21,17 @@ class ProfileAPIView(viewsets.ViewSet):
                     return Response({'errMsg': 'Wrong Credentials'}, status=status.HTTP_404_NOT_FOUND)
             except:
               return Response({'errMsg': 'User Does Not Exist'}, status=status.HTTP_404_NOT_FOUND)
+    
+    def is_admin(self, request):
+        if request.method == 'POST':
+            member_id = request.data['member_id']
+            password = request.data['password']
+            try:
+                profile = Profile.objects.get(member_id=member_id)
+                if password == profile.password:
+                    if profile.is_admin:
+                        return Response({'success':'True', 'is_admin':'True'})
+                    else:
+                        return Response({'success':'True', 'is_admin':'False'}) 
+            except:
+                return Response({'success':'False'})
