@@ -24,14 +24,12 @@ class ProfileAPIView(viewsets.ViewSet):
     
     def is_admin(self, request):
         if request.method == 'POST':
-            member_id = request.data['member_id']
-            password = request.data['password']
+            sessionId = request.data['session_id']
             try:
-                profile = Profile.objects.get(member_id=member_id)
-                if password == profile.password:
-                    if profile.is_admin:
-                        return Response({'success':'True', 'is_admin':'True'})
-                    else:
-                        return Response({'success':'True', 'is_admin':'False'}) 
+                profile = Profile.objects.get(sessionId=sessionId)
+                if profile.is_admin:
+                    return Response({'success':'True', 'is_admin':'True'})
+                else:
+                    return Response({'success':'True', 'is_admin':'False'}) 
             except:
                 return Response({'success':'False'})
