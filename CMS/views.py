@@ -18,3 +18,12 @@ class ResourceAPIView(viewsets.ViewSet):
         gsd_resources = Resource.objects.filter(committee='GSD')
         serializer = ResourceSerializer(gsd_resources, many=True)
         return Response(serializer.data)
+    
+    def add_resource(self, request):
+        if request.method == 'POST':
+            serializer = ResourceSerializer(data=request.data)
+            if (serializer.is_valid()):
+                serializer.save()
+                return Response({'msg': 'Resource Added Successfully'})
+            else:
+                return Response({'msg': 'Failed To Add Resource'})

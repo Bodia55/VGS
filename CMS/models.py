@@ -15,7 +15,7 @@ class Resource(models.Model):
     committee = models.CharField(max_length=200, choices=COMMITTEE_NAME, null=True)
     resource_type = models.CharField(max_length=200, choices=FILE_TYPE, null=True)
     resource_name = models.CharField(max_length=200, null=False, blank=False)
-    resource_data = models.FileField()
+    resource_link = models.CharField(max_length=800)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
