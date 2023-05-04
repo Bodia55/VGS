@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .models import Resource
 from .serializers import ResourceSerializer
 
+
 class ResourceAPIView(viewsets.ViewSet):
     def list_gdd(self, request):
         gdd_resources = Resource.objects.filter(committee='GDD')
